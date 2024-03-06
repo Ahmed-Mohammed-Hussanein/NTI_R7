@@ -87,12 +87,17 @@
 /* Apis */
 void LCD_voidDIOInit(void);
 void LCD_voidInit(void);
+
 void LCD_voidClear(void);
+
 void LCD_voidWriteChar(u8 copy_u8SingleChar);
 void LCD_voidWriteString(u8 *copy_pu8String);
+
 void LCD_voidGoRowColumn(u8 copy_u8Row, u8 copy_u8Column);
-void LCD_voidWriteInteger(u32 copy_u32Val);
+
+void LCD_voidWriteInteger(s32 copy_u32Val);
 void LCD_voidWriteFloat(f32 floatNumber);
+
 void LCD_voidCreateCustomChar(u8 copy_u8Address, u8 *copy_pu8CustomChar);
 
 void LCD_voidAutoDisplayShiftLeft(void);

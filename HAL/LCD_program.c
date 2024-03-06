@@ -165,11 +165,15 @@ void LCD_voidGoRowColumn(u8 copy_u8Row, u8 copy_u8Column)
 	}
 }
 
-void LCD_voidWriteInteger(u32 copy_u32Val)
+void LCD_voidWriteInteger(s32 copy_u32Val)
 {
 	u8 temp[16];
 	
-	sprintf((char*)temp, "%lu", copy_u32Val);
+	u32 local_u32Val = copy_u32Val < 0 ? -copy_u32Val : copy_u32Val;
+	
+	u8 *tempSign = copy_u32Val < 0 ? (u8*)"-" : (u8*)"";
+	
+	sprintf((char*)temp, "%s%lu", tempSign, local_u32Val);
 	
 	LCD_voidWriteString(temp);
 }
