@@ -60,6 +60,11 @@ void SevenSegment_voidDIOInit(void)
 	while(1) {} // for debug
 		
 	#endif
+	
+	SevenSegment_voidDisableSegment(SEVEN_SEGMENT_ENABLE_SEG1_PORT, SEVEN_SEGMENT_ENABLE_SEG1_PIN);
+	SevenSegment_voidDisableSegment(SEVEN_SEGMENT_ENABLE_SEG2_PORT, SEVEN_SEGMENT_ENABLE_SEG2_PIN);
+	SevenSegment_voidDisableSegment(SEVEN_SEGMENT_ENABLE_SEG3_PORT, SEVEN_SEGMENT_ENABLE_SEG3_PIN);
+	SevenSegment_voidDisableSegment(SEVEN_SEGMENT_ENABLE_SEG4_PORT, SEVEN_SEGMENT_ENABLE_SEG4_PIN);
 }
 
 void SevenSegment_voidEnableSegment(u8 copy_u8EnablePort, u8 copy_u8EnablePin)
