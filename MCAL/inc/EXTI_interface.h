@@ -9,6 +9,7 @@
 #ifndef EXTI_INTERFACE_H_
 #define EXTI_INTERFACE_H_
 
+/** @ref INT_SRC_define **/
 typedef enum
 {
 	EXTI_INT0 = 0,		// PD2
@@ -17,6 +18,7 @@ typedef enum
 	
 } EXTI_Source_t;
 
+/** @ref INT_SENSE_CONTROL_define **/
 /** INT2 supports only falling and rising edge **/
 typedef enum
 {
