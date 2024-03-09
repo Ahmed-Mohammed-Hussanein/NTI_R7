@@ -13,13 +13,18 @@
 
 #include "SevenSegment_Interface.h"
 
+/** At @ref SEVEN_SEGMENT_COMMON_MODE_define **/
 #define SEVEN_SEGMENT_COMMON_MODE					SEVEN_SEGMENT_COMMON_CATHODE
 
+/** At @ref SEVEN_SEGMENT_BCD_MODE_define **/
 #define SEVEN_SEGMENT_BCD_MODE						SEVEN_SEGMENT_WITHOUT_BCD
 
+/** At @ref SEVEN_SEGMENT_DATA_PORT_define **/
 #define SEVEN_SEGMENT_DATA_PORT						SEVEN_SEGMENT_DATA_PORTB
 
+
 /* for bcd mode use the first pins only */
+/** At @ref SEVEN_SEGMENT_PIN_define **/
 #define SEVEN_SEGMENT_PINA							SEVEN_SEGMENT_PIN0
 #define SEVEN_SEGMENT_PINB							SEVEN_SEGMENT_PIN1
 #define SEVEN_SEGMENT_PINC							SEVEN_SEGMENT_PIN2
@@ -31,6 +36,7 @@
 //#define SEVEN_SEGMENT_PIN_DOT						SEVEN_SEGMENT_PIN3
 
 /* This driver supports four seven segments only */
+/** At @ref SEVEN_SEGMENT_PIN_define && At @ref SEVEN_SEGMENT_ENABLE_PORT_define **/
 #define SEVEN_SEGMENT_ENABLE_SEG1_PORT				SEVEN_SEGMENT_DATA_PORTA
 #define SEVEN_SEGMENT_ENABLE_SEG1_PIN				SEVEN_SEGMENT_PIN0
 

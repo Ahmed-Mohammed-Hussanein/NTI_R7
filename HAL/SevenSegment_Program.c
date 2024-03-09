@@ -5,6 +5,23 @@
  *  Author: Ahmed Mohammed
  */ 
 
+
+/****************************************************************************************/
+/*          Seven Segment Driver														*/
+/*			AVR - ATMEGA32																*/
+/*			How to use this driver:														*/
+/*				- Include SevenSegment_Interface.h										*/
+/*				- Go to SevenSegment_Config.h file.										*/
+/*				- Configure the following parameters									*/
+/*					-- Seven Segment Mode( Common Cathode or Common Anode ).			*/
+/*					-- Seven Segment Decoder( With decoder or without decoder ).		*/
+/*					-- Data port which seven segment connected to.						*/
+/*					-- Which Port and pin connected to enable pin of the seven segment	*/
+/*					-- Use APIs according to its description.							*/
+/*			Note: This Driver Supports up to 4 seven segments							*/
+/****************************************************************************************/
+
+
 #include "common.h"
 
 #include "DIO_interface.h"
@@ -13,6 +30,12 @@
 #include "SevenSegment_Config.h"
 #include "SevenSegment_Interface.h"
 
+/****************************************************************************************************************************/
+/*			API Name: SevenSegment_voidDIOInit																				*/
+/*			Parameters:	Void																								*/
+/*			Return: Void																									*/
+/*			Description: This API is used to Initialize the pins of the MCU for seven segment								*/
+/****************************************************************************************************************************/
 void SevenSegment_voidDIOInit(void)
 {
 	DIO_voidSetPinDirection(SEVEN_SEGMENT_ENABLE_SEG1_PORT, SEVEN_SEGMENT_ENABLE_SEG1_PIN, DIO_PIN_OUTPUT);
@@ -67,16 +90,42 @@ void SevenSegment_voidDIOInit(void)
 	SevenSegment_voidDisableSegment(SEVEN_SEGMENT_ENABLE_SEG4_PORT, SEVEN_SEGMENT_ENABLE_SEG4_PIN);
 }
 
+/****************************************************************************************************************************/
+/*			API Name: SevenSegment_voidEnableSegment																		*/
+/*			Parameters:																										*/
+/*				- copy_u8EnablePort	: determine the port in which the enable pin of the seven segment connected to.			*/
+/*											At @ref SEVEN_SEGMENT_ENABLE_PORT_define										*/
+/*				- copy_u8EnablePin	: determine the enable pin of the seven segment At @ref SEVEN_SEGMENT_PIN_define		*/
+/*			Return: Void																									*/
+/*			Description: This API is used to enable a certain seven segment													*/
+/****************************************************************************************************************************/
 void SevenSegment_voidEnableSegment(u8 copy_u8EnablePort, u8 copy_u8EnablePin)
 {
 	DIO_voidSetPinValue(copy_u8EnablePort, copy_u8EnablePin, ENABLE_OUTPUT_STATE);	
 }
 
+/****************************************************************************************************************************/
+/*			API Name: SevenSegment_voidDisableSegment																		*/
+/*			Parameters:																										*/
+/*				- copy_u8EnablePort	: determine the port in which the enable pin of the seven segment connected to.			*/
+/*											At @ref SEVEN_SEGMENT_ENABLE_PORT_define										*/
+/*				- copy_u8EnablePin	: determine the enable pin of the seven segment At @ref SEVEN_SEGMENT_PIN_define		*/
+/*			Return: Void																									*/
+/*			Description: This API is used to disable a certain seven segment												*/
+/****************************************************************************************************************************/
 void SevenSegment_voidDisableSegment(u8 copy_u8EnablePort, u8 copy_u8EnablePin)
 {
 	DIO_voidSetPinValue(copy_u8EnablePort, copy_u8EnablePin, DISABLE_OUTPUT_STATE);
 }
 
+/****************************************************************************************************************************/
+/*			API Name: SevenSegment_voidWriteOneDigit																		*/
+/*			Parameters:																										*/
+/*				- copy_u8OneDigit	: A variable to write one digit from 0 to 9 on the seven segment.						*/
+/*			Return: Void																									*/
+/*			Description: This API is used to write one digit from 0 to 9 on a certain seven segment							*/
+/*			Note : You should call SevenSegment_voidEnableSegment API first to enable the seven segment and write the digit	*/
+/****************************************************************************************************************************/
 void SevenSegment_voidWriteOneDigit(u8 copy_u8OneDigit)
 {	
 	#if (SEVEN_SEGMENT_BCD_MODE == SEVEN_SEGMENT_WITH_BCD)
@@ -144,6 +193,14 @@ void SevenSegment_voidWriteOneDigit(u8 copy_u8OneDigit)
 	#endif
 }
 
+/****************************************************************************************************************************/
+/*			API Name: SevenSegment_voidWriteFourDigits																		*/
+/*			Parameters:																										*/
+/*				- copy_u8OneDigit	: A variable to write four digits from 0000 to 9999 on the seven segment.				*/
+/*			Return: Void																									*/
+/*			Description: This API is used to write four digits from 0000 to 9999 on the four seven segment					*/
+/*			Note : It is not required to call SevenSegment_voidEnableSegment API											*/
+/****************************************************************************************************************************/
 void SevenSegment_voidWriteFourDigits(u16 copy_u16Number)
 {
 	SevenSegment_voidDisableSegment(SEVEN_SEGMENT_ENABLE_SEG4_PORT, SEVEN_SEGMENT_ENABLE_SEG4_PIN);
