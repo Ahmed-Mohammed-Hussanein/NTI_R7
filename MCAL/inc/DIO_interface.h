@@ -13,24 +13,24 @@
 
 
                              /*************** MACROS FOR PORT ***************/
-/* macros for port id */
+/* @ref DIO_PORT */
 #define DIO_PORTA			    0
 #define DIO_PORTB			    1
 #define DIO_PORTC			    2
 #define DIO_PORTD			    3
 
-/* macros for port direction */
+/* @ref DIO_PORT_mode_define */
 #define DIO_PORT_INPUT          0x00
 #define DIO_PORT_OUTPUT			0xff
 
-/* macros for port value */
+/* @ref DIO_PORT_level_define */
 #define DIO_PORT_LOW            0x00
 #define DIO_PORT_HIGH			0xff
 
 #define DIO_PORT_MASK			0xff
 
                              /*************** MACROS FOR PIN ***************/
-/* macros for pin id */
+/* @ref DIO_PIN */
 #define DIO_PIN0			    0
 #define DIO_PIN1			    1
 #define DIO_PIN2			    2
@@ -40,11 +40,11 @@
 #define DIO_PIN6			    6
 #define DIO_PIN7			    7
 
-/* macros for pin direction */
+/* @ref DIO_PIN_mode_define */
 #define DIO_PIN_INPUT           0
 #define DIO_PIN_OUTPUT			1
 
-/* macros for pin value */
+/* @ref DIO_PIN_level_define */
 #define DIO_PIN_LOW             0
 #define DIO_PIN_HIGH			1
 
